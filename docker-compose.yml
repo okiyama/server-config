@@ -1,0 +1,26 @@
+samba:
+  image: joebiellik/samba-server
+
+  volumes:
+    # You must provide a Samba config file
+    - ./smb.conf:/etc/samba/smb.conf
+
+    # Shares
+    - ~/a:/media/a
+    - ~/b:/media/b
+    - ~/c:/media/c
+    - ~/torrent:/media/c/torrents:ro
+
+  ports:
+    - "137:137/udp"
+    - "138:138/udp"
+    - "139:139/tcp"
+    - "445:445/tcp"
+
+  environment:
+    - USERNAME=julian
+    - PASSOWRD=samba
+
+    # Uncomment to override defaults
+    # - UID=1000
+    # - GID=1000
