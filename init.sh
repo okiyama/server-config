@@ -1,7 +1,11 @@
 #from: Debian - bootstrapping past this would be copying disk images around, which isn't very flexible
+#Install plex repo
+echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list;
+curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -;
+
 sudo apt -y update;
 sudo apt -y upgrade;
-sudo apt -y install git docker docker-compose ntfs-3g zsh samba;
+sudo apt -y install git docker docker-compose ntfs-3g zsh samba plexmediaserver;
 
 
 sudo apt -y autoremove;
