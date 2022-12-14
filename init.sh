@@ -1,4 +1,29 @@
 #from: Debian - bootstrapping past this would be copying disk images around, which isn't very flexible
+#Installs:
+  # Plex
+  # Samba
+  # ClickClick
+  # WriteShite
+#Configures:
+  # Samba
+  # Auto-mounting hard drives TODO better solution to this
+  # Github CLI
+#Does not configure:
+  # Plex - login locally to the IP address, login with normal Plex account. Might have to setup libraries again
+
+#Use cases:
+  # You blammed your Debian install (again) and you want to get to "basically okay" in one command
+    # > sudo chmod +x ./init.sh && ./init.sh
+  # You added a new hard drive
+    # Update ./fstab file
+    # > sudo chmod +x ./init.sh && UNATTENDED_INIT="true" ./init.sh
+  # You are developing this further after doing initial setup
+    # > sudo chmod +x ./init.sh && UNATTENDED_INIT="true" ./init.sh
+
+#Params:
+  #UNATTENDED_INIT? - If set, will skip prompts for passwords from the user. Must be unset for first time init.
+
+
 #Install plex repo
 echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list;
 curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -;
