@@ -1,9 +1,10 @@
 #from: Debian - bootstrapping past this would be copying disk images around, which isn't very flexible
-#Installs:
+#Installs and runs in background:
   # Plex
   # Samba
   # ClickClick
   # WriteShite
+  # Nginx reverse proxy for local apps - SSL provided by CloudFlare DNS
 #Configures:
   # Samba
   # Auto-mounting hard drives TODO better solution to this
@@ -58,3 +59,5 @@ git clone https://github.com/okiyama/writeshite.com.git writeshite;
 chmod +x ./writeshite/gradlew;
 ./gradlew jibDockerBuild;
 (cd docker && sudo docker-compose up --detach);
+docker-compose pull
+docker-compose up --detach
