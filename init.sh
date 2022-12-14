@@ -26,4 +26,10 @@ if [ -z ${UNATTENDED_INIT+x} ]; then
 	gh auth login;
 fi
 sudo service smbd restart;
-#sudo docker-compose up;
+
+git clone https://github.com/okiyama/clickclickclickclickclickclickclickclick.click.git clickclick;
+sudo ./clickclick/infra/update-docker-composed.sh;
+git clone https://github.com/okiyama/writeshite.com.git writeshite;
+chmod +x ./writeshite/gradlew;
+./gradlew jibDockerBuild;
+(cd docker && sudo docker-compose up --detach);
